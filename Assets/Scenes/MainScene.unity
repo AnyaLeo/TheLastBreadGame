@@ -597,6 +597,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 526898224102552335, guid: 468fb5fb8e0889f408dc1eccdf8d9a44,
     type: 3}
+  floatingBreadPrefab: {fileID: 8375577048049723974, guid: c334e3a10ed3a7142a63397218671e54,
+    type: 3}
+  breadPositionModifier: 15
+  positionModifierMin: -0.5
+  positionModifierMax: 0.5
+  scaleModifierMin: 0.8
+  scaleModifierMax: 1.5
 --- !u!114 &1692815685
 MonoBehaviour:
   m_ObjectHideFlags: 0
