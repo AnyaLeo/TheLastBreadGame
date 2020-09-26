@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameMode : MonoBehaviour
 {
     public static event Action<int> ScoreChanged = delegate { };
 
-    private int breadScore = 0;
+    static private int breadScore = 0;
 
     [Tooltip("How much one click will add to the score in the beginning")]
     public int breadScoreModifier = 1;
@@ -16,6 +17,7 @@ public class GameMode : MonoBehaviour
     {
         Clickable.ObjectClicked += updateScore;
         Timer.TimerElapsed += onTimerElapsed;
+        Monologue.MonologueEnded += OnMonologueEnded;
     }
 
     private void updateScore()
@@ -30,9 +32,18 @@ public class GameMode : MonoBehaviour
         clickableObject.SetActive(false);
     }
 
+    private void OnMonologueEnded()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            LevelLoader.Instance.LoadNextScene();
+        }
+    }
+
     private void OnApplicationQuit()
     {
         Clickable.ObjectClicked -= updateScore;
         Timer.TimerElapsed -= onTimerElapsed;
+        Monologue.MonologueEnded -= OnMonologueEnded;
     }
 }
