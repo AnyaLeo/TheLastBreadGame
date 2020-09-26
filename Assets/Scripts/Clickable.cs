@@ -13,12 +13,10 @@ public class Clickable : MonoBehaviour
     public GameObject floatingTextPrefab;
     public GameObject floatingBreadPrefab;
 
-    // Magic number is 15 (stays withing relatively short distance from a mouse, but
-    // is random enough to not be boring)
     public float breadPositionModifier = 1f;
 
-    public float positionModifierMin = -0.5f;
-    public float positionModifierMax = 0.5f;
+    /*public float positionModifierMin = -0.5f;
+    public float positionModifierMax = 0.5f;*/
 
     public float scaleModifierMin = 0.8f;
     public float scaleModifierMax = 1.5f;

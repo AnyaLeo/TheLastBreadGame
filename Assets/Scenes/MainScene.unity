@@ -599,9 +599,7 @@ MonoBehaviour:
     type: 3}
   floatingBreadPrefab: {fileID: 8375577048049723974, guid: c334e3a10ed3a7142a63397218671e54,
     type: 3}
-  breadPositionModifier: 15
-  positionModifierMin: -0.5
-  positionModifierMax: 0.5
+  breadPositionModifier: 30
   scaleModifierMin: 0.8
   scaleModifierMax: 1.5
 --- !u!114 &1692815685
