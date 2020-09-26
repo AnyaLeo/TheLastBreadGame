@@ -7,6 +7,7 @@ public class GameMode : MonoBehaviour
     public static event Action<int> ScoreChanged = delegate { };
 
     static private int breadScore = 0;
+    static private int highscore = 0;
 
     [Tooltip("How much one click will add to the score in the beginning")]
     public int breadScoreModifier = 1;
@@ -29,7 +30,13 @@ public class GameMode : MonoBehaviour
     private void onTimerElapsed()
     {
         Debug.Log("You made " + breadScore + " bread! Congrats, follow your dreams while you still can");
+        clickableObject = GameObject.Find("ClickablePanel");
         clickableObject.SetActive(false);
+
+        if (breadScore > highscore)
+        {
+            highscore = breadScore;
+        }
     }
 
     private void OnMonologueEnded()

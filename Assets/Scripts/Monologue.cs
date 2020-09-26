@@ -12,6 +12,8 @@ public class Monologue : MonoBehaviour
     private bool isMonologueRunning;
     private int monologueIndex;
 
+    private Image activeImage;
+
     private void Start()
     {
         StartMonologue();
@@ -38,13 +40,51 @@ public class Monologue : MonoBehaviour
 
     private void MonologueDisplayLine()
     {
-        textDisplay.text = monologue[monologueIndex];
+        EraseCurrentMonologueInScene();
+
+        if (monologueIndex < monologue.Length)
+        {
+            string line = monologue[monologueIndex];
+            // If we want to display an image, it has to be present in the scene
+            if (line.Contains("IMAGE:"))
+            {
+                string[] split = line.Split(':');
+                line = split[1];
+                Debug.Log("Image name is " + line);
+
+                activeImage = GameObject.Find(line).GetComponent<Image>();
+                if (activeImage != null)
+                {
+                    activeImage.enabled = true;
+                }
+                else
+                {
+                    Debug.Log("Monologue, MonologueDisplayLine():" +
+                        "tried to display an image when no image is present in the scene");
+                }
+            }
+            else // display text
+            {
+                textDisplay.text = monologue[monologueIndex];
+            }
+        }
+
         monologueIndex++;
+    }
+
+    private void EraseCurrentMonologueInScene()
+    {
+        if (activeImage != null)
+        {
+            activeImage.enabled = false;
+            activeImage = null;
+        }
+        textDisplay.text = "";
     }
 
     private void CheckIfMonologueEnded()
     {
-        if (monologueIndex >= monologue.Length)
+        if (monologueIndex > monologue.Length)
         {
             isMonologueRunning = false;
             MonologueEnded();
