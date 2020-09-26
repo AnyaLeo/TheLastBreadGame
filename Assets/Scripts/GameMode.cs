@@ -10,9 +10,12 @@ public class GameMode : MonoBehaviour
     [Tooltip("How much one click will add to the score in the beginning")]
     public int breadScoreModifier = 1;
 
+    public GameObject clickableObject;
+
     private void Awake()
     {
         Clickable.ObjectClicked += updateScore;
+        Timer.TimerElapsed += onTimerElapsed;
     }
 
     private void updateScore()
@@ -21,8 +24,15 @@ public class GameMode : MonoBehaviour
         ScoreChanged(breadScore);
     }
 
+    private void onTimerElapsed()
+    {
+        Debug.Log("You made " + breadScore + " bread! Congrats, follow your dreams while you still can");
+        clickableObject.SetActive(false);
+    }
+
     private void OnApplicationQuit()
     {
         Clickable.ObjectClicked -= updateScore;
+        Timer.TimerElapsed -= onTimerElapsed;
     }
 }
