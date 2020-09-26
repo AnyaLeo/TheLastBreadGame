@@ -29,6 +29,11 @@ public class Timer : MonoBehaviour
         {
             currentTime -= 1 * Time.deltaTime;
             timerText.text = "0:" + currentTime.ToString("0");
+            if(currentTime <= 5f)
+            {
+                timerText.color = Color.red;
+            }
+
             if (currentTime <= 0f)
             {
                 isTimerGoing = false;
