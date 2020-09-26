@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
 /*
- * Handles spawning a popup with animation
- * and destroys the animation after the animation is done.
+ * A popup that is spawned in response to an event.
+ * Is destroyed after the animation of the popup plays out.
  * The PopupUI is attached to the parent of the actual animation component
  * because animator will use the absolute position for the animation.
  */ 

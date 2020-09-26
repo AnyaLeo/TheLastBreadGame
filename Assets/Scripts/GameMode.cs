@@ -6,6 +6,8 @@ public class GameMode : MonoBehaviour
 {
     public static event Action<int> ScoreChanged = delegate { };
 
+    public static GameMode Instance { get; private set; }
+
     static private int breadScore = 0;
     static private int highscore = 0;
 
@@ -16,6 +18,16 @@ public class GameMode : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            // Multiple instances of Level Loader are not allowed
+            Destroy(gameObject);
+        }
+
         Clickable.ObjectClicked += updateScore;
         Timer.TimerElapsed += onTimerElapsed;
         Monologue.MonologueEnded += OnMonologueEnded;

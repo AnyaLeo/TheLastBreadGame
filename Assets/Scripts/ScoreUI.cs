@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 /*
@@ -16,11 +16,5 @@ public class ScoreUI : MonoBehaviour
     private void OnScoreChanged(int newScore)
     {
         ScoreUIText.text = newScore.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
