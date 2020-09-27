@@ -84,6 +84,7 @@ public class GameMode : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             LevelLoader.Instance.LoadNextScene();
+            Destroy(this);  // quick hack to not have two game modes while playing the game
         }
     }
 
