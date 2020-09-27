@@ -31,13 +31,13 @@ public class Spawner : MonoBehaviour
         GameObject instance = Instantiate(spawnPrefab);
 
         // Position the spawned object within the dimensions of the spawner
-        Vector2 newPos = new Vector2(Random.Range(0, spawnerWidth), Random.Range(0, spawnerHeight));
+        Vector2 newPos = new Vector2(Random.Range(spawnerXPos, spawnerWidth), Random.Range(spawnerYPos, spawnerHeight));
         instance.transform.position = newPos;
 
         float scale = Random.Range(1f, 2.5f);
         instance.transform.localScale = new Vector3(scale, scale, scale);
 
-        Debug.Log(newPos);
+        //Debug.Log(newPos);
         instance.transform.SetParent(this.transform);
         //currentSpawns[currentSpawns.Length - 1] = instance;
     }

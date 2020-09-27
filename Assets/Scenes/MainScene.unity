@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 609185543}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,7 +869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 449.53235}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &746180542
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568c4f3079fb8424c9cfc5c4ba7c4025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBetweenSpawn: 2
+  secondsBetweenSpawn: 1.5
   spawnPrefab: {fileID: 1043110083710706216, guid: 38dff4577c150a2408128fea341a9a8f,
     type: 3}
 --- !u!1 &766648796
@@ -931,7 +931,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breadScoreModifier: 1
-  clickableObject: {fileID: 0}
+  badEnding: {fileID: 401651102306269664, guid: 21be83dc27231bb438126e149a586919,
+    type: 3}
+  goodEnding: {fileID: 9031843194109579576, guid: dd06bc39e198fd04cb53dccf6ff807b3,
+    type: 3}
+  scoreToBeat: 10
 --- !u!1 &1201158843
 GameObject:
   m_ObjectHideFlags: 0

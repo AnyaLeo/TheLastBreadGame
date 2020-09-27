@@ -11,10 +11,17 @@ public class GameMode : MonoBehaviour
     static private int breadScore = 0;
     static private int highscore = 0;
 
+    private GameObject clickableObject;
+
+    private Canvas canvas;
+
     [Tooltip("How much one click will add to the score in the beginning")]
     public int breadScoreModifier = 1;
 
-    public GameObject clickableObject;
+    public GameObject badEnding;
+    public GameObject goodEnding;
+
+    public int scoreToBeat = 10;
 
     private void Awake()
     {
@@ -31,6 +38,8 @@ public class GameMode : MonoBehaviour
         Clickable.ObjectClicked += updateScore;
         Timer.TimerElapsed += onTimerElapsed;
         Monologue.MonologueEnded += OnMonologueEnded;
+
+        canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
     }
 
     private void updateScore()
@@ -48,6 +57,22 @@ public class GameMode : MonoBehaviour
         if (breadScore > highscore)
         {
             highscore = breadScore;
+        }
+
+        DisplayEnding();
+    }
+
+    private void DisplayEnding()
+    {
+        if (breadScore >= scoreToBeat)
+        {
+            GameObject instance = Instantiate(goodEnding);
+            instance.transform.SetParent(canvas.transform, false);
+        }
+        else
+        {
+            GameObject instance = Instantiate(badEnding);
+            instance.transform.SetParent(canvas.transform, false);
         }
     }
 
