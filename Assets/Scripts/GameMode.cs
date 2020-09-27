@@ -32,13 +32,13 @@ public class GameMode : MonoBehaviour
         }
         else
         {
-            // Multiple instances of Level Loader are not allowed
+            // Multiple instances of game mode are not allowed
             Destroy(gameObject);
         }
 
         Clickable.ObjectClicked += updateScore;
         Timer.TimerElapsed += onTimerElapsed;
-        Monologue.MonologueEnded += OnMonologueEnded;
+        
 
         canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
     }
@@ -47,6 +47,7 @@ public class GameMode : MonoBehaviour
     {
         breadScore += breadScoreModifier;
         ScoreChanged(breadScore);
+        Debug.Log("Game object " + gameObject.name + " changed the score to " + breadScore);
     }
 
     private void onTimerElapsed()
@@ -79,19 +80,9 @@ public class GameMode : MonoBehaviour
         }
     }
 
-    private void OnMonologueEnded()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            LevelLoader.Instance.LoadNextScene();
-            Destroy(this);  // quick hack to not have two game modes while playing the game
-        }
-    }
-
     private void OnApplicationQuit()
     {
         Clickable.ObjectClicked -= updateScore;
         Timer.TimerElapsed -= onTimerElapsed;
-        Monologue.MonologueEnded -= OnMonologueEnded;
     }
 }
