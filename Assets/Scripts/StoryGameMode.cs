@@ -16,7 +16,7 @@ public class StoryGameMode : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private void OnDisable()
     {
         Monologue.MonologueEnded -= OnMonologueEnded;
     }

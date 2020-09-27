@@ -6,10 +6,10 @@ public class GameMode : MonoBehaviour
 {
     public static event Action<int> ScoreChanged = delegate { };
 
-    public static GameMode Instance { get; private set; }
+    //public static GameMode Instance { get; private set; }
 
-    static private int breadScore = 0;
-    static private int highscore = 0;
+    private int breadScore = 0;
+    private int highscore = 0;
 
     private GameObject clickableObject;
 
@@ -26,7 +26,7 @@ public class GameMode : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        /*if (Instance == null)
         {
             Instance = this;
         }
@@ -34,11 +34,12 @@ public class GameMode : MonoBehaviour
         {
             // Multiple instances of game mode are not allowed
             Destroy(gameObject);
-        }
+        }*/
 
         Clickable.ObjectClicked += updateScore;
         Timer.TimerElapsed += onTimerElapsed;
-        
+
+        Debug.Log("Game Mode is awake");
 
         canvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<Canvas>();
     }
@@ -80,7 +81,7 @@ public class GameMode : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private void OnDisable()
     {
         Clickable.ObjectClicked -= updateScore;
         Timer.TimerElapsed -= onTimerElapsed;

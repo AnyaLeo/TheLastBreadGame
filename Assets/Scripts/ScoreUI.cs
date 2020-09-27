@@ -6,15 +6,21 @@ using UnityEngine.UI;
  */
 public class ScoreUI : MonoBehaviour
 {
-    public Text ScoreUIText;
+    private Text ScoreUIText;
 
     private void Awake()
     {
         GameMode.ScoreChanged += OnScoreChanged;
+        ScoreUIText = GetComponent<Text>();
     }
 
     private void OnScoreChanged(int newScore)
     {
         ScoreUIText.text = newScore.ToString();
+    }
+
+    private void OnDisable()
+    {
+        GameMode.ScoreChanged -= OnScoreChanged;
     }
 }
