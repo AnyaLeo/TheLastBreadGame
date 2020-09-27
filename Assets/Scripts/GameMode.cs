@@ -20,6 +20,7 @@ public class GameMode : MonoBehaviour
 
     public GameObject badEnding;
     public GameObject goodEnding;
+    public GameObject secretEnding;
 
     public int scoreToBeat = 10;
 
@@ -64,15 +65,17 @@ public class GameMode : MonoBehaviour
 
     private void DisplayEnding()
     {
-        if (breadScore >= scoreToBeat)
+        if (breadScore == 0)
         {
-            GameObject instance = Instantiate(goodEnding);
-            instance.transform.SetParent(canvas.transform, false);
+            secretEnding.SetActive(true);
+        }
+        else if (breadScore >= scoreToBeat)
+        {
+            goodEnding.SetActive(true);
         }
         else
         {
-            GameObject instance = Instantiate(badEnding);
-            instance.transform.SetParent(canvas.transform, false);
+            badEnding.SetActive(true);
         }
     }
 
